@@ -185,13 +185,13 @@ class TicTacToe(object):
         self.remaining_squares_in_column = []
         self.remaining_in_diagonals = []
 
-        print("Precomputing remaining squares: ")
+        # print("Precomputing remaining squares: ")
 
         # precompute for each row
         for i in range(self.side):
             cnt_marked = 0
             is_blocked = False
-            print("Row: ", self.rows[i])
+            # print("Row: ", self.rows[i])
 
             for j in range(self.side):
                 el = self.rows[i][j]
@@ -207,7 +207,7 @@ class TicTacToe(object):
             else:
                 self.remaining_squares_in_row.append(self.side - cnt_marked)
 
-        print("Precomputed rows: ", self.remaining_squares_in_row)
+        # print("Precomputed rows: ", self.remaining_squares_in_row)
 
         # precompute for each column
         for i in range(self.side):
@@ -284,7 +284,9 @@ class TicTacToe(object):
                 rem_columns = self.remaining_squares_in_column[j]
                 tmp_list = []
 
-                # print("Row: {0}, Col: {1}".format(i, j))
+                # print("* Row: {0}, Col: {1}".format(i, j))
+                # print(rem_rows, rem_columns)
+
                 # print("Rem rows: {0}".format(rem_rows))
                 # print("Rem cols: {0}".format(rem_columns))
 
@@ -297,7 +299,7 @@ class TicTacToe(object):
                 if i == j and self.remaining_in_diagonals[0] != -1:
                     tmp_list.append(self.remaining_in_diagonals[0])
 
-                if i == self.side - i and self.remaining_in_diagonals[1] != -1:
+                if j == self.side - i - 1 and self.remaining_in_diagonals[1] != -1:
                     tmp_list.append(self.remaining_in_diagonals[1])
 
                 if tmp_list:
@@ -312,12 +314,12 @@ class TicTacToe(object):
                         return tuple([i, j])
 
         # sort the list of available squares
-        available_squares.sort(key=lambda x: x["list"][0], reverse=True)
+        available_squares.sort(key=lambda x: x["list"][0])
         available_squares.sort(key=lambda x: len(x["list"]), reverse=True)
 
-        print("Finding optimal square: ")
-        for item in available_squares:
-            print(item)
+        # print("Finding optimal square: ")
+        # for item in available_squares:
+        #     print(item)
 
         return available_squares[0]["x"], available_squares[0]["y"]
 
@@ -327,7 +329,7 @@ class TicTacToe(object):
         """
         # check if the computer can win on this turn
         computer_move = self.get_winning_pos(self.computer_ch)
-        print('Computer winning move: ', computer_move)
+        #print('Computer winning move: ', computer_move)
         if computer_move != (-1, -1):
             self.set_square(computer_move[0], computer_move[1], self.computer_ch)
             computer_move = tuple(x + 1 for x in computer_move)
@@ -336,7 +338,7 @@ class TicTacToe(object):
 
         # check if the player wins on their next move
         player_move = self.get_winning_pos(self.player_ch)
-        print('Player winning move: ', player_move)
+        #print('Player winning move: ', player_move)
         if player_move != (-1, -1):
             self.set_square(player_move[0], player_move[1], self.computer_ch)
             print(self.computer_move_message.format(*player_move))
