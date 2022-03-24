@@ -1,3 +1,4 @@
+import Board
 import GameLogic
 
 
@@ -6,36 +7,39 @@ class TicTacToe(GameLogic.GameLogic):
     Tic Tac Toe game class
     """
 
-    def __init__(self, side=3):
+    def __init__(self, side=3, player_ch='X', opponent_ch='O'):
         """
-        Initialize rows
+        Initialize helper classes
+        with board side and player symbol
         Board side is 3 by default
         """
-        super(TicTacToe, self).__init__(side)
+        # super(TicTacToe, self).__init__(side)
+        self.board = Board.Board(side, player_ch, opponent_ch)
+        self.game_logic = GameLogic.GameLogic()
 
-    def player_make_move(self, x, y):
+    def player_make_move(self, row, col):
         """
-        Make player move at (x, y)
+        Make player move at (row, col)
         returns true if the move is valid
         """
         try:
-            if x < 1 or y < 1 or x > self.side or y > self.side:
+            if row < 1 or col < 1 or row > self.board.side or col > self.board.side:
                 raise IndexError
 
-            tmp_square = self.rows[x - 1][y - 1]
+            tmp_square = self.board.get_square(row - 1, col - 1)
 
-            if tmp_square != self.empty_square:
+            if tmp_square != self.board.empty_square:
                 print('Invalid input!')
                 print('Target square is already taken!')
                 return False
 
             # print('Square:' + tmp_square)
-            self.set_square(x - 1, y - 1, self.player_ch)
+            self.board.set_square(row - 1, col - 1, self.board.player_ch)
             return True
 
         except IndexError:
             print('Invalid input!')
-            print('Row and column indexes must be between 1 and {0}'.format(self.side))
+            print('Row and column indexes must be between 1 and {0}'.format(self.board.side))
             return False
 
     def play(self):
@@ -45,19 +49,19 @@ class TicTacToe(GameLogic.GameLogic):
         print("-- Welcome to the game! --")
         print("~" * 40)
         print('')
-        self.print_board()
+        self.board.print_board()
         move_cnt = 0
 
-        while move_cnt < self.side * self.side:
+        while move_cnt < self.board.side * self.board.side:
             # the player makes a move
             is_valid = False
             while not is_valid:
                 print('Your turn!')
 
                 try:
-                    x = int(input("Enter a row: "))
-                    y = int(input("Enter a column: "))
-                    is_valid = self.player_make_move(x, y)
+                    row = int(input("Enter a row: "))
+                    col = int(input("Enter a column: "))
+                    is_valid = self.player_make_move(row, col)
                 except SyntaxError:
                     print('Invalid input')
                 except ValueError:
@@ -65,47 +69,53 @@ class TicTacToe(GameLogic.GameLogic):
                     print('Enter a number for row and column!')
 
             move_cnt += 1
-            self.print_board()
+            print(self.board.move_message.format("Player", row, col))
+            self.board.print_board()
 
             # check if the player has won
-            has_won = self.check_win(self.rows, self.player_ch)
+            has_won = self.game_logic.check_win(self.board, self.board.player_ch)
             if has_won:
-                self.print_player_wins()
+                self.board.print_player_wins()
                 break
 
             # check if the board is completed
-            if move_cnt >= self.side * self.side:
-                self.print_draw()
+            if move_cnt >= self.board.side * self.board.side:
+                self.board.print_draw()
                 break
 
             # find the computer's move
-            optimal_move = self.get_optimal_move(self.rows, move_cnt + 1, self.computer_ch, self.player_ch)
+            # reverse the players' symbols => it's the opponent's turn
+            self.board.reverse_players()
+            optimal_move = self.game_logic.get_optimal_move(self.board, move_cnt + 1)
             result = optimal_move[0]
             computer_x = optimal_move[1]
             computer_y = optimal_move[2]
             move_cnt += 1
 
+            # revert changes
+            self.board.reverse_players()
+
             if result == -1:
-                self.print_player_wins()
+                self.board.print_player_wins()
                 break
             elif result == 0:
-                self.set_square(computer_x, computer_y, self.computer_ch)
-                print(self.computer_move_message.format(*(computer_x, computer_y)))
+                self.board.set_square(computer_x, computer_y, self.board.opponent_ch)
+                print(self.board.move_message.format(*("The Computer", computer_x + 1, computer_y + 1)))
             else:
-                self.set_square(computer_x, computer_y, self.computer_ch)
-                print(self.computer_move_message.format(*(computer_x + 1, computer_y + 1)))
+                self.board.set_square(computer_x, computer_y, self.board.opponent_ch)
+                print(self.board.move_message.format(*("The Computer", computer_x + 1, computer_y + 1)))
 
-            self.print_board()
+            self.board.print_board()
 
             # check if the computer wins
-            has_won = self.check_win(self.rows, self.computer_ch)
+            has_won = self.game_logic.check_win(self.board, self.board.opponent_ch)
             if has_won:
-                self.print_computer_wins()
+                self.board.print_opponent_wins()
                 break
 
             # check if the board is filled
-            if move_cnt >= self.side * self.side:
-                self.print_draw()
+            if move_cnt >= self.board.side * self.board.side:
+                self.board.print_draw()
                 break
 
         print("Game over!")

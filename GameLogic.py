@@ -1,26 +1,25 @@
-import Board
-
-
-class GameLogic(Board.Board):
+class GameLogic:
     """
     Contains the Tic Tac Toe game logic
     """
-    def __init__(self, side):
+    def __init__(self):
         """
         Initializes the class
         """
-        super(GameLogic, self).__init__(side)
 
-    def check_win(self, tmp_state, ch):
+    @staticmethod
+    def check_win(board, ch):
         """
+        Accepts a board class
         Check if the player with symbol 'ch' has won the game
+        from the current board state
         """
         # check rows
-        for i in range(self.side):
+        for row in range(board.side):
             has_won = True
-            for j in range(self.side):
-                el = tmp_state[i][j]
-                if el != ch:
+            for col in range(board.side):
+                square = board.rows[row][col]
+                if square != ch:
                     has_won = False
                     break
 
@@ -28,11 +27,11 @@ class GameLogic(Board.Board):
                 return True
 
         # check columns
-        for i in range(self.side):
+        for col in range(board.side):
             has_won = True
-            for j in range(self.side):
-                el = tmp_state[j][i]
-                if el != ch:
+            for row in range(board.side):
+                square = board.rows[row][col]
+                if square != ch:
                     has_won = False
                     break
 
@@ -41,9 +40,9 @@ class GameLogic(Board.Board):
 
         # check main diagonal
         has_won = True
-        for i in range(self.side):
-            el = tmp_state[i][i]
-            if el != ch:
+        for row in range(board.side):
+            square = board.rows[row][row]
+            if square != ch:
                 has_won = False
                 break
 
@@ -52,71 +51,87 @@ class GameLogic(Board.Board):
 
         # check anti diagonal
         has_won = True
-        for i in range(self.side):
-            el = tmp_state[i][self.side - i - 1]
-            if el != ch:
+        for row in range(board.side):
+            square = board.rows[row][board.side - row - 1]
+            if square != ch:
                 has_won = False
                 break
 
         return has_won
 
-    def get_game_result(self, tmp_state, player_ch, opponent_ch):
+    def get_game_result(self, board):
         """
+        Accepts a board class
+        Calculates the game result given the board state
         Returns 1  - if the player has won the game,
                -1  - if the player has lost the game,
                 0  - if the game is a draw, or incomplete
         """
-        if self.check_win(tmp_state, player_ch):
+        if self.check_win(board, board.player_ch):
             return 1
 
-        if self.check_win(tmp_state, opponent_ch):
+        if self.check_win(board, board.opponent_ch):
             return -1
 
         return 0
 
-    def get_optimal_move(self, tmp_state, move_cnt, player_ch, opponent_ch):
+    def get_optimal_move(self, board, move_cnt):
         """
+        Accepts a board class and number of moves made
         Finds the optimal move by trying all
         available moves and comparing results
         """
-        game_result = self.get_game_result(tmp_state, player_ch, opponent_ch)
+        # print('')
+        # for row in board.rows:
+        #     print(row)
+        # print('')
+
+        game_result = self.get_game_result(board)
 
         # if no more moves can be made return the result
-        if move_cnt > self.side * self.side:
+        if move_cnt > board.side * board.side:
             return game_result, -1, -1
 
         # if a player has won the game
         if game_result != 0:
             return game_result, -1, -1
 
-        next_state = tmp_state.copy()
+        #next_state = board.rows[:]
 
         can_draw = False
         opt_x = -1
         opt_y = -1
 
-        for i in range(self.side):
-            for j in range(self.side):
-                el = tmp_state[i][j]
+        for row in range(board.side):
+            for col in range(board.side):
+                #square = tmp_state[row][col]
+                square = board.get_square(row, col)
 
-                if el == self.empty_square:
-                    next_state[i][j] = player_ch
+                if square == board.empty_square:
+                    #next_state[row][col] = board.player_ch
+                    board.set_square(row, col, board.player_ch)
 
-                    # get the opponent's result if our next move is (i, j)
-                    result = self.get_optimal_move(next_state, move_cnt + 1, opponent_ch, player_ch)
+                    # reverse the players
+                    board.reverse_players()
 
-                    next_state[i][j] = self.empty_square
+                    # get the opponent's result if our next move is (row, col)
+                    result = self.get_optimal_move(board, move_cnt + 1)
+
+                    # revert changes made
+                    board.reverse_players()
+                    board.set_square(row, col, board.empty_square)
+                    # next_state[row][col] = self.board.empty_square
 
                     # the opponent loses from the next game state
-                    # we win by making the move (i, j)
+                    # we win by making the move (row, col)
                     if result[0] == -1:
-                        return 1, i, j
+                        return 1, row, col
 
                     # the result is a draw
                     if result[0] == 0:
                         can_draw = True
-                        opt_x = i
-                        opt_y = j
+                        opt_x = row
+                        opt_y = col
 
         # there is no winning move,
         # and we can force a draw
