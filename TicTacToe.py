@@ -88,8 +88,8 @@ class TicTacToe(GameLogic.GameLogic):
             self.board.reverse_players()
             optimal_move = self.game_logic.get_optimal_move(self.board, move_cnt + 1)
             result = optimal_move[0]
-            computer_x = optimal_move[1]
-            computer_y = optimal_move[2]
+            computer_row = optimal_move[2]
+            computer_col = optimal_move[3]
             move_cnt += 1
 
             # revert changes
@@ -99,11 +99,11 @@ class TicTacToe(GameLogic.GameLogic):
                 self.board.print_player_wins()
                 break
             elif result == 0:
-                self.board.set_square(computer_x, computer_y, self.board.opponent_ch)
-                print(self.board.move_message.format(*("The Computer", computer_x + 1, computer_y + 1)))
+                self.board.set_square(computer_row, computer_col, self.board.opponent_ch)
+                print(self.board.move_message.format(*("The Computer", computer_row + 1, computer_col + 1)))
             else:
-                self.board.set_square(computer_x, computer_y, self.board.opponent_ch)
-                print(self.board.move_message.format(*("The Computer", computer_x + 1, computer_y + 1)))
+                self.board.set_square(computer_row, computer_col, self.board.opponent_ch)
+                print(self.board.move_message.format(*("The Computer", computer_row + 1, computer_col + 1)))
 
             self.board.print_board()
 

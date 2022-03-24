@@ -78,8 +78,9 @@ class GameLogic:
     def get_optimal_move(self, board, move_cnt):
         """
         Accepts a board class and number of moves made
-        Finds the optimal move by trying all
-        available moves and comparing results
+        Finds the optimal move by trying all available
+        moves and comparing results
+        Returns: result type, moves until victory, optimal row, optimal col
         """
         # print('')
         # for row in board.rows:
@@ -90,25 +91,26 @@ class GameLogic:
 
         # if no more moves can be made return the result
         if move_cnt > board.side * board.side:
-            return game_result, -1, -1
+            # print('state: ', game_result, move_cnt, -1, -1)
+            return game_result, move_cnt, -1, -1
 
         # if a player has won the game
         if game_result != 0:
-            return game_result, -1, -1
+            # print('state: ', game_result, move_cnt, -1, -1)
+            return game_result, move_cnt, -1, -1
 
-        #next_state = board.rows[:]
-
+        max_move_cnt = board.side * board.side + 2
+        min_moves = max_move_cnt
+        max_moves = -1
         can_draw = False
-        opt_x = -1
-        opt_y = -1
+        opt_row = -1
+        opt_col = -1
 
         for row in range(board.side):
             for col in range(board.side):
-                #square = tmp_state[row][col]
                 square = board.get_square(row, col)
 
                 if square == board.empty_square:
-                    #next_state[row][col] = board.player_ch
                     board.set_square(row, col, board.player_ch)
 
                     # reverse the players
@@ -120,23 +122,39 @@ class GameLogic:
                     # revert changes made
                     board.reverse_players()
                     board.set_square(row, col, board.empty_square)
-                    # next_state[row][col] = self.board.empty_square
 
                     # the opponent loses from the next game state
                     # we win by making the move (row, col)
-                    if result[0] == -1:
-                        return 1, row, col
+                    # check if this move ends the game faster
+                    # than the previous fastest wining move
+                    if result[0] == -1 and result[1] < min_moves:
+                        # print('loss found', result[1], row, col)
+                        # return 1, min_moves, row, col
+                        min_moves = result[1]
+                        opt_row = row
+                        opt_col = col
 
-                    # the result is a draw
-                    if result[0] == 0:
+                    # the result is a draw and a wining move isn't found yet
+                    if result[0] == 0 and min_moves == max_move_cnt:
                         can_draw = True
-                        opt_x = row
-                        opt_y = col
+                        opt_row = row
+                        opt_col = col
+
+                    if result[0] == 1 and min_moves == max_move_cnt and max_moves < result[1] and not can_draw:
+                        max_moves = result[1]
+                        opt_row = row
+                        opt_col = col
+        # a winning move exists
+        if min_moves != max_move_cnt:
+            # print('state: 1', min_moves, opt_row, opt_col)
+            return 1, min_moves, opt_row, opt_col
 
         # there is no winning move,
         # and we can force a draw
         if can_draw:
-            return 0, opt_x, opt_y
+            # print('state: 0', move_cnt, opt_row, opt_col)
+            return 0, move_cnt, opt_row, opt_col
 
         # we lose from the current game state
-        return -1, -1, -1
+        # print('state: -1', max_moves, opt_row, opt_col)
+        return -1, max_moves, opt_row, opt_col
