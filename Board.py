@@ -33,12 +33,19 @@ class BoardText(object):
 
     @staticmethod
     def get_player_move():
+
+        result = -1, -1
         try:
             row = int(input("Enter a row: "))
             col = int(input("Enter a column: "))
-            return row, col
+            result = row, col
+
         except Exception:
-            return -1, -1
+            result = -1, -1
+
+        finally:
+            return result
+
 
     @staticmethod
     def show_message(message):
