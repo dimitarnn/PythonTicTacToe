@@ -106,12 +106,12 @@ class TicTacToe(object):
                 self.board.set_square(computer_row, computer_col, self.board.opponent_ch)
 
                 # TODO: Simplify and do not use the attribute directly
-                self.board.show_message(self.board.move_message.format("The Computer", computer_row + 1, computer_col + 1))
+                self.board.show_message(self.board.move_message.format("The Computer", computer_row+1, computer_col+1))
             else:
                 self.board.set_square(computer_row, computer_col, self.board.opponent_ch)
 
                 # TODO: Simplify and do not use the attribute directly
-                self.board.show_message(self.board.move_message.format("The Computer", computer_row + 1, computer_col + 1))
+                self.board.show_message(self.board.move_message.format("The Computer", computer_row+1, computer_col+1))
 
             self.board.display_board()
 

@@ -28,7 +28,7 @@ class BoardText(object):
 
         self.empty_square = '.'
         self.side = side
-        self.rows = [[self.empty_square for i in range(side)] for i in range(side)]
+        self.rows = [[self.empty_square for _ in range(side)] for _ in range(side)]
         self.move_message = "{0} marks square: ({1}, {2})."
 
     @staticmethod
@@ -45,7 +45,6 @@ class BoardText(object):
 
         finally:
             return result
-
 
     @staticmethod
     def show_message(message):
