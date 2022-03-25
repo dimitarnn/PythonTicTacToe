@@ -1,10 +1,14 @@
 import TicTacToe as game
+import Board
+import GameLogic
 
 if __name__ == '__main__':
 
-    tmp_game = game.TicTacToe()
-    tmp_game.play()
+    board = Board.BoardText()
+    logic = GameLogic.GameLogicRecursive()
 
+    tmp_game = game.TicTacToe(game_logic=logic, game_gui=board)
+    tmp_game.play()
 
 
 

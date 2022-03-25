@@ -1,21 +1,17 @@
-import Board
-import GameLogic
-
-
-class TicTacToe(GameLogic.GameLogic):
+class TicTacToe(object):
     """
     Tic Tac Toe game class
     """
 
-    def __init__(self, side=3, player_ch='X', opponent_ch='O'):
+    def __init__(self, game_logic, game_gui):
         """
         Initialize helper classes
         with board side and player symbol
         Board side is 3 by default
         """
         # super(TicTacToe, self).__init__(side)
-        self.board = Board.Board(side, player_ch, opponent_ch)
-        self.game_logic = GameLogic.GameLogic()
+        self.board = game_gui
+        self.game_logic = game_logic
 
     def player_make_move(self, row, col):
         """
@@ -51,6 +47,8 @@ class TicTacToe(GameLogic.GameLogic):
         print('')
         self.board.print_board()
         move_cnt = 0
+        row = 0
+        col = 0
 
         while move_cnt < self.board.side * self.board.side:
             # the player makes a move

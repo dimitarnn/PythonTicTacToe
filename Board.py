@@ -1,4 +1,8 @@
-class Board(object):
+class BoardGraphic(object):
+    pass
+
+
+class BoardText(object):
     """
     Board class
     """

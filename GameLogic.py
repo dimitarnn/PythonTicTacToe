@@ -1,4 +1,7 @@
-class GameLogic:
+class GameLogicNonRecursive(object):
+    pass
+
+class GameLogicRecursive(object):
     """
     Contains the Tic Tac Toe game logic
     """
