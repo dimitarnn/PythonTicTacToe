@@ -11,7 +11,7 @@ class GameLogic:
     def check_win(board, ch):
         """
         Accepts a board class
-        Check if the player with symbol 'ch' has won the game
+        Checks if the player with symbol 'ch' has won the game
         from the current board state
         """
         # check rows
@@ -59,6 +59,153 @@ class GameLogic:
 
         return has_won
 
+    @staticmethod
+    def can_win_in_rows(board):
+        """
+        Checks if a player can complete a row
+        """
+        for row in range(board.side):
+            player_has_marked = False
+            opponent_has_marked = False
+            for col in range(board.side):
+                square = board.get_square(row, col)
+                if square == board.player_ch:
+                    player_has_marked = True
+                elif square == board.opponent_ch:
+                    opponent_has_marked = True
+                if player_has_marked and opponent_has_marked:
+                    break
+
+            if not player_has_marked or not opponent_has_marked:
+                return True
+        return False
+
+    @staticmethod
+    def can_win_in_cols(board):
+        """
+        Checks if a player can complete a column
+        """
+        for col in range(board.side):
+            player_has_marked = False
+            opponent_has_marked = False
+            for row in range(board.side):
+                square = board.get_square(row, col)
+                if square == board.player_ch:
+                    player_has_marked = True
+                elif square == board.opponent_ch:
+                    opponent_has_marked = True
+                if player_has_marked and opponent_has_marked:
+                    break
+
+            if not player_has_marked or not opponent_has_marked:
+                return True
+        return False
+
+    @staticmethod
+    def can_win_in_main_diag(board):
+        """
+        Checks if a player can win in the main diagonal
+        """
+        player_has_marked = False
+        opponent_has_marked = False
+        for row in range(board.side):
+            square = board.get_square(row, row)
+            if square == board.player_ch:
+                player_has_marked = True
+            elif square == board.opponent_ch:
+                opponent_has_marked = True
+            if player_has_marked and opponent_has_marked:
+                return False
+
+        if not player_has_marked or not opponent_has_marked:
+            return True
+        return False
+
+    @staticmethod
+    def can_win_in_anti_diag(board):
+        """
+        Checks if a player can win in the anti-diagonal
+        """
+        player_has_marked = False
+        opponent_has_marked = False
+        for row in range(board.side):
+            square = board.get_square(row, board.side - row - 1)
+            if square == board.player_ch:
+                player_has_marked = True
+            elif square == board.opponent_ch:
+                opponent_has_marked = True
+            if player_has_marked and opponent_has_marked:
+                return False
+
+        if not player_has_marked or not opponent_has_marked:
+            return True
+        return False
+
+    def is_winnable(self, board):
+        """
+        Check if the game can still be one by either of the players
+        """
+        # check rows
+        if self.can_win_in_rows(board):
+            return True
+
+        # check cols
+        if self.can_win_in_cols(board):
+            return True
+
+        # check main diagonal
+        if self.can_win_in_main_diag(board):
+            return True
+
+        # check anti-diagonal
+        return self.can_win_in_anti_diag(board)
+
+    @staticmethod
+    def get_final_move(board):
+        """
+        Checks if a single move remains and
+        returns it's (row, col)
+        """
+        final_row = -1
+        final_col = -1
+        for row in range(board.side):
+            for col in range(board.side):
+                square = board.get_square(row, col)
+                if square == board.empty_square:
+                    if final_row == -1 and final_col == -1:
+                        final_row = row
+                        final_col = col
+                    else:
+                        return -1, -1
+
+        return final_row, final_col
+
+    def is_draw(self, board, player_ch):
+        """
+        Checks if the game will end in a draw
+        regardless of the moves made
+        The player with symbol player_ch must make the next move
+        """
+        # check if invalid player symbol is provided
+        if player_ch != board.player_ch and player_ch != board.opponent_ch:
+            return False
+
+        # the game cannot be won by either player
+        if not self.is_winnable(board):
+            return True
+
+        # check if a single move remains
+        final_move = self.get_final_move(board)
+        if final_move != (-1, -1):
+            board.set_square(final_move[0], final_move[1], player_ch)
+            # check the result after the last remaining move is made
+            result = self.get_game_result(board)
+            # if the result is a draw, return True
+            if result == 0:
+                return True
+
+        return False
+
     def get_game_result(self, board):
         """
         Accepts a board class
@@ -80,29 +227,28 @@ class GameLogic:
         Accepts a board class and number of moves made
         Finds the optimal move by trying all available
         moves and comparing results
-        Returns: result type, moves until victory, optimal row, optimal col
+        Returns: result type, moves until game end, optimal row, optimal col
         """
-        # print('')
-        # for row in board.rows:
-        #     print(row)
-        # print('')
 
         game_result = self.get_game_result(board)
 
         # if no more moves can be made return the result
         if move_cnt > board.side * board.side:
-            # print('state: ', game_result, move_cnt, -1, -1)
             return game_result, move_cnt, -1, -1
 
         # if a player has won the game
         if game_result != 0:
-            # print('state: ', game_result, move_cnt, -1, -1)
             return game_result, move_cnt, -1, -1
 
+        # find the move resulting in: the fastest win,
+        # a draw, or the slowest loss
         max_move_cnt = board.side * board.side + 2
-        min_moves = max_move_cnt
-        max_moves = -1
+        can_win = False
         can_draw = False
+        # minimal amount of moves until win
+        min_moves = max_move_cnt
+        # maximal amount of moves until loss
+        max_moves = -1
         opt_row = -1
         opt_col = -1
 
@@ -128,33 +274,32 @@ class GameLogic:
                     # check if this move ends the game faster
                     # than the previous fastest wining move
                     if result[0] == -1 and result[1] < min_moves:
-                        # print('loss found', result[1], row, col)
-                        # return 1, min_moves, row, col
+                        can_win = True
                         min_moves = result[1]
                         opt_row = row
                         opt_col = col
 
                     # the result is a draw and a wining move isn't found yet
-                    if result[0] == 0 and min_moves == max_move_cnt:
+                    if result[0] == 0 and not can_win:
                         can_draw = True
                         opt_row = row
                         opt_col = col
 
-                    if result[0] == 1 and min_moves == max_move_cnt and max_moves < result[1] and not can_draw:
+                    # a move resulting in a win or a draw isn't found yet
+                    # we want to lose in as many moves as possible
+                    if result[0] == 1 and not can_win and not can_draw and max_moves < result[1]:
                         max_moves = result[1]
                         opt_row = row
                         opt_col = col
+
         # a winning move exists
-        if min_moves != max_move_cnt:
-            # print('state: 1', min_moves, opt_row, opt_col)
+        if can_win:
             return 1, min_moves, opt_row, opt_col
 
         # there is no winning move,
         # and we can force a draw
         if can_draw:
-            # print('state: 0', move_cnt, opt_row, opt_col)
             return 0, move_cnt, opt_row, opt_col
 
         # we lose from the current game state
-        # print('state: -1', max_moves, opt_row, opt_col)
         return -1, max_moves, opt_row, opt_col

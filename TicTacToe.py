@@ -83,6 +83,11 @@ class TicTacToe(GameLogic.GameLogic):
                 self.board.print_draw()
                 break
 
+            # check if the game inevitably results in a draw
+            if self.game_logic.is_draw(self.board, self.board.opponent_ch):
+                self.board.print_draw()
+                break
+
             # find the computer's move
             # reverse the players' symbols => it's the opponent's turn
             self.board.reverse_players()
@@ -115,6 +120,11 @@ class TicTacToe(GameLogic.GameLogic):
 
             # check if the board is filled
             if move_cnt >= self.board.side * self.board.side:
+                self.board.print_draw()
+                break
+
+            # check if the game inevitably results in a draw
+            if self.game_logic.is_draw(self.board, self.board.player_ch):
                 self.board.print_draw()
                 break
 
