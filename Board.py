@@ -31,36 +31,52 @@ class BoardText(object):
         self.rows = [[self.empty_square for i in range(side)] for i in range(side)]
         self.move_message = "{0} marks square: ({1}, {2})."
 
-    def print_board(self):
+    @staticmethod
+    def get_player_move():
+        try:
+            row = int(input("Enter a row: "))
+            col = int(input("Enter a column: "))
+            return row, col
+        except Exception:
+            return -1, -1
+
+    @staticmethod
+    def show_message(message):
         """
-        Print the given game state
+        Shows a message to the user
         """
-        print('')
+        print(message)
+
+    def display_board(self):
+        """
+        Display the given game state
+        """
+        self.show_message('')
         separator = '_' * (4 * self.side - 1)
 
-        # print first row
+        # display the first row
         row = self.rows[0]
         line = " {0} ".format(row[0])
         for square in row[1:]:
             line += '| {0} '.format(square)
-        print(line)
-        print(separator)
+        self.show_message(line)
+        self.show_message(separator)
 
-        # print middle rows
+        # display middle rows
         for row in self.rows[1:-1]:
             line = " {0} ".format(row[0])
             for square in row[1:]:
                 line += '| {0} '.format(square)
-            print(line)
-            print(separator)
+            self.show_message(line)
+            self.show_message(separator)
 
-        # print last row
+        # display the last row
         row = self.rows[-1]
         line = " {0} ".format(row[0])
         for square in row[1:]:
             line += '| {0} '.format(square)
-        print(line)
-        print('')
+        self.show_message(line)
+        self.show_message('')
 
     def reverse_players(self):
         """
@@ -97,20 +113,20 @@ class BoardText(object):
         """
         self.rows[row][col] = '{0}'.format(ch)
 
-    def print_player_wins(self):
+    def display_player_wins(self):
         """
-        Prints a message that the player has won
+        Displays a victory message
         """
-        print("You have won!!!")
+        self.show_message("You have won!!!")
 
-    def print_opponent_wins(self):
+    def display_opponent_wins(self):
         """
-        Prints a message that the opponent has won
+        Displays a defeat message
         """
-        print("You lose!")
+        self.show_message("You lose!")
 
-    def print_draw(self):
+    def display_game_is_draw(self):
         """
-        Prints a message that the game is a draw
+        Displays a draw message
         """
-        print("Draw!")
+        self.show_message("Draw!")

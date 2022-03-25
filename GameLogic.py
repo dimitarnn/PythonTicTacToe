@@ -1,10 +1,12 @@
 class GameLogicNonRecursive(object):
     pass
 
+
 class GameLogicRecursive(object):
     """
     Contains the Tic Tac Toe game logic
     """
+
     def __init__(self):
         """
         Initializes the class
