@@ -1,7 +1,7 @@
 ## Algorithm Description ##
 
 The algorithm finds the 'optimal' move, given the current board state and assuming optimal play from both players.
-Optimal play here means on that each of their turns both players will make the best availble move, with the ultimate
+Optimal play here means that on each of their turns both players will make the best availble move, with the ultimate
 goal of winning the game in as few moves as possible. If a move resulting in a win is not available, the player will
 seek to force a draw. Finally if a player can't win and a draw is not possible the player will make the move that will
 result in the longest game possible.
