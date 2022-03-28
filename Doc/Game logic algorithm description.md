@@ -20,7 +20,7 @@ only a loss is possible. In that case the algorithms chooses the square at `(row
 However if multiple such moves are present, the algorithm chosses the one resulting in the fastest win, or in other
 words the one with the lowest number of moves until the game ends.
 
-If none of the next possible states has the result of `-1`, that means a win is not possible from the current state
+If none of the next possible states has the result of `-1`, that means a win is not possible from the current state,
 assuming optimal play, and the algorithm attempts to force a draw. A draw is possible if one of the next states will
 be a draw - which means it will have the game result of `0`. If the game will end in a draw the number of moves doesn't
 matter, so the algorithm can choose to mark an arbitrary square leading to a state with the result of `0`. 
