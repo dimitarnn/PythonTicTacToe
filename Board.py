@@ -54,6 +54,12 @@ class BoardText(object):
         """
         print(message)
 
+    def show_move_message(self, player_name, row, col):
+        """
+        Shows a message describing the player's move
+        """
+        self.show_message(self.move_message.format(player_name, row, col))
+
     def display_board(self):
         """
         Display the given game state
