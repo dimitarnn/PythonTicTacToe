@@ -26,8 +26,8 @@ be a draw - which means it will have the game result of `0`. If the game will en
 matter, so the algorithm can choose to mark an arbitrary square leading to a state with the result of `0`. 
 
 If none of the next states has the game result of either `-1` or `0` a win or a draw is not possible and the present
-state is losing. In such case the algorithm choses the square at `(row, col)` which will lead to the longest game, that is
-the state with the largest number of moves until the game ends.
+state is losing. In such case the algorithm choses the square at `(row, col)` which will lead to the longest game, and that
+is the state with the largest number of moves until the game ends.
 
 Corner cases are if the game is already over or the number of moves made exceeds the number of squares on the board. In
 this case the algorithm checks the game state using the helper method `get_game_result` and returns the found game result,
