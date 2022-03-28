@@ -13,8 +13,8 @@ the game will end, the row of the optimal move - `row` and the column of the opt
 Game result is `1` if the player whos turn it is can win from the current game state, `0` if the player can achieve
 a draw when playing optimally, and `-1` if the player inevitably loses.
 
-The algorithm uses the concepts of Min-Max and game theory to find the optimal move. The algorithm checks future states
-achivable after marking a single square (for example at `(row, col)`) from the current state. If at least one of these
+The algorithm uses the concepts of Min-Max and game theory to find the optimal move. The algorithm checks future states,
+achievable after marking a single square (for example at `(row, col)`) from the current state. If at least one of these
 states has the game result of `-1` that means the player on the following turn will be presented with a state from which
 only a loss is possible. In that case the algorithms chooses the square at `(row, col)` and wins the game.
 However if multiple such moves are present, the algorithm chosses the one resulting in the fastest win, or in other
