@@ -39,6 +39,7 @@ class BoardText(object):
             row = int(input("Enter a row: "))
             col = int(input("Enter a column: "))
             result = row, col
+            print(result)
 
         except Exception:
             result = -1, -1
