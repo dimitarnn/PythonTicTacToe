@@ -31,4 +31,4 @@ is the state with the largest number of moves until the game ends.
 
 Corner cases are if the game is already over or the number of moves made exceeds the number of squares on the board. In
 this case the algorithm checks the game state using the helper method `get_game_result` and returns the found game result,
-number of moves made, received as parameter, and `(-1, -1)` for the row and column
+number of moves made received as parameter, and `(-1, -1)` for the row and column
