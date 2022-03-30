@@ -1,87 +1,8 @@
-from abc import abstractmethod
+import IBoard
+import IGameLogic
 
 
-class IGameLogic(object):
-    """
-    Game Logic Interface
-    """
-    def __init__(self):
-        pass
-
-    @abstractmethod
-    def check_win(self, board, ch):
-        pass
-
-    @abstractmethod
-    def can_win_in_rows(self, board):
-        pass
-
-    @abstractmethod
-    def can_win_in_cols(self, board):
-        pass
-
-    @abstractmethod
-    def can_win_in_main_diag(self, board):
-        pass
-
-    @abstractmethod
-    def can_win_in_anti_diag(self, board):
-        pass
-
-    @abstractmethod
-    def is_winnable(self, board):
-        pass
-
-    @abstractmethod
-    def get_final_move(self, board):
-        pass
-
-    @abstractmethod
-    def is_draw(self, board, player_ch):
-        pass
-
-    @abstractmethod
-    def get_game_result(self, board):
-        pass
-
-    @abstractmethod
-    def get_optimal_move(self, board, move_cnt):
-        pass
-
-
-class GameLogicNonRecursive(IGameLogic):
-    def check_win(self, board, ch):
-        pass
-
-    def can_win_in_rows(self, board):
-        pass
-
-    def can_win_in_cols(self, board):
-        pass
-
-    def can_win_in_main_diag(self, board):
-        pass
-
-    def can_win_in_anti_diag(self, board):
-        pass
-
-    def is_winnable(self, board):
-        pass
-
-    def get_final_move(self, board):
-        pass
-
-    def is_draw(self, board, player_ch):
-        pass
-
-    def get_game_result(self, board):
-        pass
-
-    def get_optimal_move(self, board, move_cnt):
-        pass
-
-
-class GameLogicRecursive(object):
+class GameLogicRecursive(IGameLogic.IGameLogic):
     """
     Contains the Tic Tac Toe game logic
     """
@@ -90,9 +11,9 @@ class GameLogicRecursive(object):
         """
         Initializes the class
         """
+        super(GameLogicRecursive, self).__init__()
 
-    @staticmethod
-    def check_win(board, ch):
+    def check_win(self, board: IBoard.IBoard, ch: str) -> bool:
         """
         Accepts a board class
         Checks if the player with symbol 'ch' has won the game
@@ -143,8 +64,7 @@ class GameLogicRecursive(object):
 
         return has_won
 
-    @staticmethod
-    def can_win_in_rows(board):
+    def can_win_in_rows(self, board: IBoard.IBoard) -> bool:
         """
         Checks if a player can complete a row
         """
@@ -164,8 +84,7 @@ class GameLogicRecursive(object):
                 return True
         return False
 
-    @staticmethod
-    def can_win_in_cols(board):
+    def can_win_in_cols(self, board: IBoard.IBoard) -> bool:
         """
         Checks if a player can complete a column
         """
@@ -185,8 +104,7 @@ class GameLogicRecursive(object):
                 return True
         return False
 
-    @staticmethod
-    def can_win_in_main_diag(board):
+    def can_win_in_main_diag(self, board: IBoard.IBoard) -> bool:
         """
         Checks if a player can win in the main diagonal
         """
@@ -205,8 +123,7 @@ class GameLogicRecursive(object):
             return True
         return False
 
-    @staticmethod
-    def can_win_in_anti_diag(board):
+    def can_win_in_anti_diag(self, board: IBoard.IBoard) -> bool:
         """
         Checks if a player can win in the anti-diagonal
         """
@@ -225,7 +142,7 @@ class GameLogicRecursive(object):
             return True
         return False
 
-    def is_winnable(self, board):
+    def is_winnable(self, board: IBoard.IBoard) -> bool:
         """
         Check if the game can still be one by either of the players
         """
@@ -244,8 +161,7 @@ class GameLogicRecursive(object):
         # check anti-diagonal
         return self.can_win_in_anti_diag(board)
 
-    @staticmethod
-    def get_final_move(board):
+    def get_final_move(self, board: IBoard.IBoard) -> tuple[int, int]:
         """
         Checks if a single move remains and
         returns it's (row, col)
@@ -255,7 +171,7 @@ class GameLogicRecursive(object):
         for row in range(board.get_side()):
             for col in range(board.get_side()):
                 square = board.get_square(row, col)
-                if square == board.empty_square:
+                if square == board.get_empty_square():
                     if final_row == -1 and final_col == -1:
                         final_row = row
                         final_col = col
@@ -264,7 +180,7 @@ class GameLogicRecursive(object):
 
         return final_row, final_col
 
-    def is_draw(self, board, player_ch):
+    def is_draw(self, board: IBoard.IBoard, player_ch: str) -> bool:
         """
         Checks if the game will end in a draw
         regardless of the moves made
@@ -290,7 +206,7 @@ class GameLogicRecursive(object):
 
         return False
 
-    def get_game_result(self, board):
+    def get_game_result(self, board: IBoard.IBoard) -> int:
         """
         Accepts a board class
         Calculates the game result given the board state
@@ -306,7 +222,7 @@ class GameLogicRecursive(object):
 
         return 0
 
-    def get_optimal_move(self, board, move_cnt):
+    def get_optimal_move(self, board: IBoard.IBoard, move_cnt: int) -> tuple[int, int, int, int]:
         """
         Accepts a board class and number of moves made
         Finds the optimal move by trying all available
@@ -340,7 +256,7 @@ class GameLogicRecursive(object):
             for col in range(board.get_side()):
                 square = board.get_square(row, col)
 
-                if square == board.empty_square:
+                if square == board.get_empty_square():
                     board.set_square(row, col, board.get_player_ch())
 
                     # reverse the players
@@ -351,7 +267,7 @@ class GameLogicRecursive(object):
 
                     # revert changes made
                     board.reverse_players()
-                    board.set_square(row, col, board.empty_square)
+                    board.set_square(row, col, board.get_empty_square())
 
                     # the opponent loses from the next game state
                     # we win by making the move (row, col)

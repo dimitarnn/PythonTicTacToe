@@ -1,9 +1,13 @@
+import IBoard
+import IGameLogic
+
+
 class TicTacToe(object):
     """
     Tic Tac Toe game class
     """
 
-    def __init__(self, game_logic, game_gui):
+    def __init__(self, game_logic: IGameLogic.IGameLogic, game_gui: IBoard.IBoard):
         """
         Initialize helper classes
         with board side and player symbol
@@ -13,31 +17,31 @@ class TicTacToe(object):
         self.board = game_gui
         self.game_logic = game_logic
 
-    def player_make_move(self, row, col):
+    def player_make_move(self, row: int, col: int) -> bool:
         """
         Make player move at (row, col)
         returns true if the move is valid
         """
         try:
-            if row < 1 or col < 1 or row > self.board.side or col > self.board.side:
+            if row < 1 or col < 1 or row > self.board.get_side() or col > self.board.get_side():
                 raise IndexError
 
             tmp_square = self.board.get_square(row - 1, col - 1)
 
-            if tmp_square != self.board.empty_square:
+            if tmp_square != self.board.get_empty_square():
                 self.board.show_message('Invalid input!')
                 self.board.show_message('Target square is already taken!')
                 return False
 
-            self.board.set_square(row - 1, col - 1, self.board.player_ch)
+            self.board.set_square(row - 1, col - 1, self.board.get_player_ch())
             return True
 
         except IndexError:
             self.board.show_message('Invalid input!')
-            self.board.show_message('Row and column indexes must be between 1 and {0}'.format(self.board.side))
+            self.board.show_message('Row and column indexes must be between 1 and {0}'.format(self.board.get_side()))
             return False
 
-    def play(self):
+    def play(self) -> None:
         """
         Simulates a game in which the user moves first
         """
@@ -49,7 +53,7 @@ class TicTacToe(object):
         row = 0
         col = 0
 
-        while move_cnt < self.board.side * self.board.side:
+        while move_cnt < self.board.get_side() * self.board.get_side():
             # the player makes a move
             is_valid = False
             while not is_valid:
@@ -70,18 +74,18 @@ class TicTacToe(object):
             self.board.display_board()
 
             # check if the player has won
-            has_won = self.game_logic.check_win(self.board, self.board.player_ch)
+            has_won = self.game_logic.check_win(self.board, self.board.get_player_ch())
             if has_won:
                 self.board.display_player_wins()
                 break
 
             # check if the board is completed
-            if move_cnt >= self.board.side * self.board.side:
+            if move_cnt >= self.board.get_side() * self.board.get_side():
                 self.board.display_game_is_draw()
                 break
 
             # check if the game inevitably results in a draw
-            if self.game_logic.is_draw(self.board, self.board.opponent_ch):
+            if self.game_logic.is_draw(self.board, self.board.get_opponent_ch()):
                 self.board.display_game_is_draw()
                 break
 
@@ -101,26 +105,26 @@ class TicTacToe(object):
                 self.board.display_player_wins()
                 break
             elif result == 0:
-                self.board.set_square(computer_row, computer_col, self.board.opponent_ch)
+                self.board.set_square(computer_row, computer_col, self.board.get_opponent_ch())
                 self.board.show_move_message("The Computer", computer_row + 1, computer_col + 1)
             else:
-                self.board.set_square(computer_row, computer_col, self.board.opponent_ch)
+                self.board.set_square(computer_row, computer_col, self.board.get_opponent_ch())
                 self.board.show_move_message("The Computer", computer_row + 1, computer_col + 1)
             self.board.display_board()
 
             # check if the computer wins
-            has_won = self.game_logic.check_win(self.board, self.board.opponent_ch)
+            has_won = self.game_logic.check_win(self.board, self.board.get_opponent_ch())
             if has_won:
                 self.board.display_opponent_wins()
                 break
 
             # check if the board is filled
-            if move_cnt >= self.board.side * self.board.side:
+            if move_cnt >= self.board.get_side() * self.board.get_side():
                 self.board.display_game_is_draw()
                 break
 
             # check if the game inevitably results in a draw
-            if self.game_logic.is_draw(self.board, self.board.player_ch):
+            if self.game_logic.is_draw(self.board, self.board.get_player_ch()):
                 self.board.display_game_is_draw()
                 break
 
