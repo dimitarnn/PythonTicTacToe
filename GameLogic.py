@@ -1,5 +1,84 @@
-class GameLogicNonRecursive(object):
-    pass
+from abc import abstractmethod
+
+
+class IGameLogic(object):
+    """
+    Game Logic Interface
+    """
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def check_win(self, board, ch):
+        pass
+
+    @abstractmethod
+    def can_win_in_rows(self, board):
+        pass
+
+    @abstractmethod
+    def can_win_in_cols(self, board):
+        pass
+
+    @abstractmethod
+    def can_win_in_main_diag(self, board):
+        pass
+
+    @abstractmethod
+    def can_win_in_anti_diag(self, board):
+        pass
+
+    @abstractmethod
+    def is_winnable(self, board):
+        pass
+
+    @abstractmethod
+    def get_final_move(self, board):
+        pass
+
+    @abstractmethod
+    def is_draw(self, board, player_ch):
+        pass
+
+    @abstractmethod
+    def get_game_result(self, board):
+        pass
+
+    @abstractmethod
+    def get_optimal_move(self, board, move_cnt):
+        pass
+
+
+class GameLogicNonRecursive(IGameLogic):
+    def check_win(self, board, ch):
+        pass
+
+    def can_win_in_rows(self, board):
+        pass
+
+    def can_win_in_cols(self, board):
+        pass
+
+    def can_win_in_main_diag(self, board):
+        pass
+
+    def can_win_in_anti_diag(self, board):
+        pass
+
+    def is_winnable(self, board):
+        pass
+
+    def get_final_move(self, board):
+        pass
+
+    def is_draw(self, board, player_ch):
+        pass
+
+    def get_game_result(self, board):
+        pass
+
+    def get_optimal_move(self, board, move_cnt):
+        pass
 
 
 class GameLogicRecursive(object):
