@@ -28,7 +28,7 @@ ________________________________________________________________________________
 - The row of the optimal move
 - The column of the optimal move
 
-Game result is `1` if the oppent can win from the current game state, `0` if the opponent 
+Game result is `1` if the opponent can win from the current game state, `0` if the opponent 
 can achieve a draw when playing optimally, and `-1` if the opponent inevitably loses.
 
 _________________________________________________________________________________________________
