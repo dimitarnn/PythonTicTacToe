@@ -1,73 +1,73 @@
-<mxfile host="app.diagrams.net" modified="2022-03-30T07:56:03.101Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36" etag="wMRHUdKwT3ewLCzB6Jxz" version="17.2.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-30T19:47:55.977Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36" etag="SSBFRxX4WWZan2A_tOOj" version="17.2.5" type="github">
   <diagram id="HBwxSXEpBMIWdHwHoesp" name="Page-1">
-    <mxGraphModel dx="1182" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="FNie_leRkGiXPVd4mdk4-18" value="GameLogicRecursive" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="530" y="530" width="260" height="254" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-18" value="GameLogicRecursive" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="435" y="530" width="410" height="254" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-18">
-          <mxGeometry y="26" width="260" height="8" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-18">
+          <mxGeometry y="26" width="410" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-20" value="+ check_win(board, ch) : bool&#xa;+ can_win_in_rows(board) : bool&#xa;+ can_win_in_cols(board) : bool&#xa;+ can_win_in_main_diag(board) : bool&#xa;+ can_win_in_anti_diag(board) : bool&#xa;+ is_winnable(board) : bool&#xa;+ get_final_move(board) : tuple&#xa;+ is_draw(board, player_ch) : bool&#xa;+ get_game_result(board) : int&#xa;+ get_optimal_move(board, move_cnt) : tuple" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-18">
-          <mxGeometry y="34" width="260" height="220" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-20" value="+ check_win(board: IBoard, ch: str) : bool&#xa;+ can_win_in_rows(board: IBoard) : bool&#xa;+ can_win_in_cols(board: IBoard) : bool&#xa;+ can_win_in_main_diag(board: IBoard) : bool&#xa;+ can_win_in_anti_diag(board: IBoard) : bool&#xa;+ is_winnable(board: IBoard) : bool&#xa;+ get_final_move(board: IBoard) : tuple[int, int]&#xa;+ is_draw(board: IBoard, player_ch: str) : bool&#xa;+ get_game_result(board: IBoard) : int&#xa;+ get_optimal_move(board: IBoard, move_cnt: int) : tuple[int, int, int, int]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-18">
+          <mxGeometry y="34" width="410" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-21" value="TicTacToe" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="320" y="20" width="190" height="120" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-21" value="TicTacToe" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="20" width="270" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-22" value="- board : Board&#xa;- game_logic : GameLogic" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-21">
-          <mxGeometry y="26" width="190" height="44" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-22" value="- board : IBoard&#xa;- game_logic : IGameLogic" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-21">
+          <mxGeometry y="26" width="270" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-23" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-21">
-          <mxGeometry y="70" width="190" height="8" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-23" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-21">
+          <mxGeometry y="70" width="270" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-24" value="+ player_make_move(row, col)&#xa;+ play()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-21">
-          <mxGeometry y="78" width="190" height="42" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-24" value="+ player_make_move(row: int, col: int) : bool&#xa;+ play()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-21">
+          <mxGeometry y="78" width="270" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-25" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="FNie_leRkGiXPVd4mdk4-22">
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-25" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="I9SuTqZ6XPD1QLjbLpXo-22">
           <mxGeometry x="-0.8824" relative="1" as="geometry">
             <mxPoint x="350" y="400" as="sourcePoint" />
             <mxPoint x="175" y="240" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-26" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNie_leRkGiXPVd4mdk4-22" target="FNie_leRkGiXPVd4mdk4-34">
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-26" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="I9SuTqZ6XPD1QLjbLpXo-22" target="I9SuTqZ6XPD1QLjbLpXo-34">
           <mxGeometry x="-0.8653" y="-2" relative="1" as="geometry">
             <mxPoint x="350" y="400" as="sourcePoint" />
             <mxPoint x="625" y="250" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-27" value="BoardText" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="75" y="530" width="200" height="310" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-27" value="BoardText" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="600" width="220" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-28" value="- player_ch : str&#xa;- opponent_ch : str&#xa;- empty_square : str&#xa;- side : int&#xa;- rows : list[]&#xa;- move_message : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-27">
-          <mxGeometry y="26" width="200" height="94" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-28" value="- player_ch : str&#xa;- opponent_ch : str&#xa;- empty_square : str&#xa;- side : int&#xa;- rows : list[]&#xa;- move_message : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-27">
+          <mxGeometry y="26" width="220" height="94" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-29" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-27">
-          <mxGeometry y="120" width="200" height="8" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-29" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-27">
+          <mxGeometry y="120" width="220" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-30" value="+ get_player_move() : tuple&#xa;+ show_message(message)&#xa;+ display_board()&#xa;+ reverse_players()&#xa;+ set_player_ch(ch)&#xa;+ set_opponent_ch(ch)&#xa;+ get_square(row, col) : str&#xa;+ set_square(row, col, ch)&#xa;+ display_player_wins()&#xa;+ display_opponent_wins()&#xa;+ display_game_is_draw()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FNie_leRkGiXPVd4mdk4-27">
-          <mxGeometry y="128" width="200" height="182" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-30" value="+ get_side() : int&#xa;+ get_empty_square() : str&#xa;+ get_player_move() : tuple[int, int]&#xa;+ show_message(message: str)&#xa;+ display_board()&#xa;+ reverse_players()&#xa;+ get_player_ch() : str&#xa;+ set_player_ch(ch: str)&#xa;+ get_opponent_ch() : str&#xa;+ set_opponent_ch(ch: str)&#xa;+ get_square(row: int, col: int) : str&#xa;+ set_square(row: int, col: int, ch: str)&#xa;+ display_player_wins()&#xa;+ display_opponent_wins()&#xa;+ display_game_is_draw()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="I9SuTqZ6XPD1QLjbLpXo-27">
+          <mxGeometry y="128" width="220" height="232" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-31" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNie_leRkGiXPVd4mdk4-18" target="FNie_leRkGiXPVd4mdk4-34">
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-31" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="I9SuTqZ6XPD1QLjbLpXo-18" target="I9SuTqZ6XPD1QLjbLpXo-34">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="350" y="660" as="sourcePoint" />
             <mxPoint x="630" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-32" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNie_leRkGiXPVd4mdk4-27" target="FNie_leRkGiXPVd4mdk4-33">
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-32" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="I9SuTqZ6XPD1QLjbLpXo-27" target="I9SuTqZ6XPD1QLjbLpXo-33">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="375" y="680" as="sourcePoint" />
-            <mxPoint x="370" y="520" as="targetPoint" />
+            <mxPoint x="175" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-33" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IBoard&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ get_player_move() : tuple&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ show_message(message)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_board()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ reverse_players()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ set_player_ch(ch)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ set_opponent_ch(ch)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_square(row, col) : str&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ set_square(row, col, ch)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_player_wins()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_opponent_wins()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_game_is_draw()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-          <mxGeometry x="80" y="240" width="190" height="220" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-33" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IBoard&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ get_side() : int&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ get_empty_square() : str&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ get_player_move() : tuple[int, int]&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ show_message(message: str)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_board()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ reverse_players()&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ get_player_ch() : str&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ set_player_ch(ch: str)&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ get_opponent_ch() : str&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ set_opponent_ch(ch: str)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_square(row: int, col: int) : str&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ set_square(row: int, col: int, ch: str)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_player_wins()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_opponent_wins()&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ display_game_is_draw()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="220" height="270" as="geometry" />
         </mxCell>
-        <mxCell id="FNie_leRkGiXPVd4mdk4-34" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IGameLogic&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ check_win(board, ch) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_rows(board) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_cols(board) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_main_diag(board) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_anti_diag(board) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ is_winnable(board) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_final_move(board) : tuple&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ is_draw(board, player_ch) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_game_result(board) : int&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_optimal_move(board, move_cnt) : tuple&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-          <mxGeometry x="530" y="250" width="260" height="220" as="geometry" />
+        <mxCell id="I9SuTqZ6XPD1QLjbLpXo-34" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IGameLogic&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ check_win(board: IBoard, ch: str) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_rows(board: IBoard) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_cols(board: IBoard) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_main_diag(board: IBoard) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ can_win_in_anti_diag(board: IBoard) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ is_winnable(board: IBoard) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_final_move(board: IBoard) : tuple[int, int]&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ is_draw(board: IBoard, player_ch: str) : bool&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_game_result(board: IBoard) : int&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ get_optimal_move(board: IBoard, move_cnt: int) : tuple[int, int, int, int]&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="250" width="400" height="220" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
