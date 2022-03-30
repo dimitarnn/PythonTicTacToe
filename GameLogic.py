@@ -20,10 +20,10 @@ class GameLogicRecursive(object):
         from the current board state
         """
         # check rows
-        for row in range(board.side):
+        for row in range(board.get_side()):
             has_won = True
-            for col in range(board.side):
-                square = board.rows[row][col]
+            for col in range(board.get_side()):
+                square = board.get_square(row, col)
                 if square != ch:
                     has_won = False
                     break
@@ -32,10 +32,10 @@ class GameLogicRecursive(object):
                 return True
 
         # check columns
-        for col in range(board.side):
+        for col in range(board.get_side()):
             has_won = True
-            for row in range(board.side):
-                square = board.rows[row][col]
+            for row in range(board.get_side()):
+                square = board.get_square(row, col)
                 if square != ch:
                     has_won = False
                     break
@@ -45,8 +45,8 @@ class GameLogicRecursive(object):
 
         # check main diagonal
         has_won = True
-        for row in range(board.side):
-            square = board.rows[row][row]
+        for row in range(board.get_side()):
+            square = board.get_square(row, row)
             if square != ch:
                 has_won = False
                 break
@@ -56,8 +56,8 @@ class GameLogicRecursive(object):
 
         # check anti diagonal
         has_won = True
-        for row in range(board.side):
-            square = board.rows[row][board.side - row - 1]
+        for row in range(board.get_side()):
+            square = board.get_square(row, board.get_side() - row - 1)
             if square != ch:
                 has_won = False
                 break
@@ -69,14 +69,14 @@ class GameLogicRecursive(object):
         """
         Checks if a player can complete a row
         """
-        for row in range(board.side):
+        for row in range(board.get_side()):
             player_has_marked = False
             opponent_has_marked = False
-            for col in range(board.side):
+            for col in range(board.get_side()):
                 square = board.get_square(row, col)
-                if square == board.player_ch:
+                if square == board.get_player_ch():
                     player_has_marked = True
-                elif square == board.opponent_ch:
+                elif square == board.get_opponent_ch():
                     opponent_has_marked = True
                 if player_has_marked and opponent_has_marked:
                     break
@@ -90,14 +90,14 @@ class GameLogicRecursive(object):
         """
         Checks if a player can complete a column
         """
-        for col in range(board.side):
+        for col in range(board.get_side()):
             player_has_marked = False
             opponent_has_marked = False
-            for row in range(board.side):
+            for row in range(board.get_side()):
                 square = board.get_square(row, col)
-                if square == board.player_ch:
+                if square == board.get_player_ch():
                     player_has_marked = True
-                elif square == board.opponent_ch:
+                elif square == board.get_opponent_ch():
                     opponent_has_marked = True
                 if player_has_marked and opponent_has_marked:
                     break
@@ -113,11 +113,11 @@ class GameLogicRecursive(object):
         """
         player_has_marked = False
         opponent_has_marked = False
-        for row in range(board.side):
+        for row in range(board.get_side()):
             square = board.get_square(row, row)
-            if square == board.player_ch:
+            if square == board.get_player_ch():
                 player_has_marked = True
-            elif square == board.opponent_ch:
+            elif square == board.get_opponent_ch():
                 opponent_has_marked = True
             if player_has_marked and opponent_has_marked:
                 return False
@@ -133,11 +133,11 @@ class GameLogicRecursive(object):
         """
         player_has_marked = False
         opponent_has_marked = False
-        for row in range(board.side):
-            square = board.get_square(row, board.side - row - 1)
-            if square == board.player_ch:
+        for row in range(board.get_side()):
+            square = board.get_square(row, board.get_side() - row - 1)
+            if square == board.get_player_ch():
                 player_has_marked = True
-            elif square == board.opponent_ch:
+            elif square == board.get_opponent_ch():
                 opponent_has_marked = True
             if player_has_marked and opponent_has_marked:
                 return False
@@ -173,8 +173,8 @@ class GameLogicRecursive(object):
         """
         final_row = -1
         final_col = -1
-        for row in range(board.side):
-            for col in range(board.side):
+        for row in range(board.get_side()):
+            for col in range(board.get_side()):
                 square = board.get_square(row, col)
                 if square == board.empty_square:
                     if final_row == -1 and final_col == -1:
@@ -192,7 +192,7 @@ class GameLogicRecursive(object):
         The player with symbol player_ch must make the next move
         """
         # check if invalid player symbol is provided
-        if player_ch != board.player_ch and player_ch != board.opponent_ch:
+        if player_ch != board.get_player_ch() and player_ch != board.get_opponent_ch():
             return False
 
         # the game cannot be won by either player
@@ -219,10 +219,10 @@ class GameLogicRecursive(object):
                -1  - if the player has lost the game,
                 0  - if the game is a draw, or incomplete
         """
-        if self.check_win(board, board.player_ch):
+        if self.check_win(board, board.get_player_ch()):
             return 1
 
-        if self.check_win(board, board.opponent_ch):
+        if self.check_win(board, board.get_opponent_ch()):
             return -1
 
         return 0
@@ -238,7 +238,7 @@ class GameLogicRecursive(object):
         game_result = self.get_game_result(board)
 
         # if no more moves can be made return the result
-        if move_cnt > board.side * board.side:
+        if move_cnt > board.get_side() * board.get_side():
             return game_result, move_cnt, -1, -1
 
         # if a player has won the game
@@ -247,7 +247,7 @@ class GameLogicRecursive(object):
 
         # find the move resulting in: the fastest win,
         # a draw, or the slowest loss
-        max_move_cnt = board.side * board.side + 2
+        max_move_cnt = board.get_side() * board.get_side() + 2
         can_win = False
         can_draw = False
         # minimal amount of moves until win
@@ -257,12 +257,12 @@ class GameLogicRecursive(object):
         opt_row = -1
         opt_col = -1
 
-        for row in range(board.side):
-            for col in range(board.side):
+        for row in range(board.get_side()):
+            for col in range(board.get_side()):
                 square = board.get_square(row, col)
 
                 if square == board.empty_square:
-                    board.set_square(row, col, board.player_ch)
+                    board.set_square(row, col, board.get_player_ch())
 
                     # reverse the players
                     board.reverse_players()

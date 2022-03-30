@@ -1,8 +1,123 @@
-class BoardGraphic(object):
-    pass
+from abc import abstractmethod
 
 
-class BoardText(object):
+class IBoard(object):
+    """
+    Board Interface
+    """
+
+    def __init__(self):
+        pass
+    
+    @abstractmethod
+    def get_side(self):
+        pass
+    
+    @abstractmethod
+    def get_player_move(self):
+        pass
+
+    @abstractmethod
+    def show_message(self, message):
+        pass
+
+    @abstractmethod
+    def show_move_message(self, player_name, row, col):
+        pass
+
+    @abstractmethod
+    def display_board(self):
+        pass
+
+    @abstractmethod
+    def reverse_players(self):
+        pass
+    
+    @abstractmethod
+    def get_player_ch(self):
+        pass
+    
+    @abstractmethod
+    def set_player_ch(self, ch):
+        pass
+    
+    @abstractmethod
+    def get_opponent_ch(self):
+        pass
+    
+    @abstractmethod
+    def set_opponent_ch(self, ch):
+        pass
+
+    @abstractmethod
+    def get_square(self, row, col):
+        pass
+
+    @abstractmethod
+    def set_square(self, row, col, ch):
+        pass
+
+    @abstractmethod
+    def display_player_wins(self):
+        pass
+
+    @abstractmethod
+    def display_opponent_wins(self):
+        pass
+
+    @abstractmethod
+    def display_game_is_draw(self):
+        pass
+
+
+class BoardGraphic(IBoard):
+    def get_side(self):
+        pass
+    
+    def get_player_ch(self):
+        pass
+
+    def get_opponent_ch(self):
+        pass
+
+    def show_message(self, message):
+        pass
+
+    def show_move_message(self, player_name, row, col):
+        pass
+
+    def display_board(self):
+        pass
+
+    def reverse_players(self):
+        pass
+
+    def set_player_ch(self, ch):
+        pass
+
+    def set_opponent_ch(self, ch):
+        pass
+
+    def get_square(self, row, col):
+        pass
+
+    def set_square(self, row, col, ch):
+        pass
+
+    def display_player_wins(self):
+        pass
+
+    def display_opponent_wins(self):
+        pass
+
+    def display_game_is_draw(self):
+        pass
+
+    def get_player_move(self):
+        pass
+
+
+class BoardText(IBoard):
     """
     Board class
     """
@@ -12,6 +127,8 @@ class BoardText(object):
         Initialize rows, player and opponent symbol
         Board side is 3 by default
         """
+        super(BoardText, self).__init__()
+
         # the player uses 'X' by default
         self.player_ch = player_ch
 
@@ -30,10 +147,17 @@ class BoardText(object):
         self.side = side
         self.rows = [[self.empty_square for _ in range(side)] for _ in range(side)]
         self.move_message = "{0} marks square: ({1}, {2})."
-
-    @staticmethod
-    def get_player_move():
-
+    
+    def get_side(self):
+        """
+        Returns the board side
+        """
+        return self.side
+    
+    def get_player_move(self):
+        """
+        Reads and returns the player move from input
+        """
         result = -1, -1
         try:
             row = int(input("Enter a row: "))
@@ -46,8 +170,7 @@ class BoardText(object):
         finally:
             return result
 
-    @staticmethod
-    def show_message(message):
+    def show_message(self, message):
         """
         Shows a message to the user
         """
@@ -97,13 +220,25 @@ class BoardText(object):
         tmp_player_ch = self.player_ch
         self.set_player_ch(self.opponent_ch)
         self.set_opponent_ch(tmp_player_ch)
-
+    
+    def get_player_ch(self):
+        """
+        Returns the player's symbol
+        """
+        return self.player_ch
+    
     def set_player_ch(self, ch):
         """
         Sets the value of the player symbol
         """
         self.player_ch = ch
-
+    
+    def get_opponent_ch(self):
+        """
+        Returns the opponent's symbol
+        """
+        return self.opponent_ch
+    
     def set_opponent_ch(self, ch):
         """
         Sets the value of the opponent symbol
