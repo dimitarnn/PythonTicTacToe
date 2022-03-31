@@ -7,7 +7,7 @@ Algorithm** was chosen.
 _________________________________________________________________________________________________
 ### Concept
 
-The algorithm shall find the 'optimal' play of the computer player at a given state of the board.
+The algorithm shall find what the 'optimal' play is at a given state of the board.
 The definition of optimal play is the following:
 
 1. Win the game in as few moves as possible
