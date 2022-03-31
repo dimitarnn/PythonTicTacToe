@@ -9,6 +9,3 @@ if __name__ == '__main__':
 
     tmp_game = game.TicTacToe(game_logic=logic, game_gui=board)
     tmp_game.play()
-
-
-

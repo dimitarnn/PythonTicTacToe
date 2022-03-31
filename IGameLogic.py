@@ -38,7 +38,7 @@ class IGameLogic(ABC):
         pass
 
     @abstractmethod
-    def get_final_move(self, board: IBoard.IBoard) -> bool:
+    def get_final_move(self, board: IBoard.IBoard) -> (int, int):
         pass
 
     @abstractmethod
