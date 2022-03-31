@@ -14,6 +14,7 @@ The definition of optimal play is the following:
 2. If a win is not possible then force a draw
 3. If a draw is not possible then try to prolong the game as much as possible
 
+*Note: The algorithm assumes the opponent is also going to play optimally*
 _________________________________________________________________________________________________
 ### Input Data
 
