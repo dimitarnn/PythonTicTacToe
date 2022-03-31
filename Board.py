@@ -1,17 +1,18 @@
-class BoardGraphic(object):
-    pass
+import IBoard
 
 
-class BoardText(object):
+class BoardText(IBoard.IBoard):
     """
     Board class
     """
 
-    def __init__(self, side=3, player_ch='X', opponent_ch='O'):
+    def __init__(self, side: int = 3, player_ch: str = 'X', opponent_ch: str = 'O'):
         """
         Initialize rows, player and opponent symbol
         Board side is 3 by default
         """
+        super(BoardText, self).__init__()
+
         # the player uses 'X' by default
         self.player_ch = player_ch
 
@@ -31,9 +32,22 @@ class BoardText(object):
         self.rows = [[self.empty_square for _ in range(side)] for _ in range(side)]
         self.move_message = "{0} marks square: ({1}, {2})."
 
-    @staticmethod
-    def get_player_move():
+    def get_side(self) -> int:
+        """
+        Returns the board side
+        """
+        return self.side
 
+    def get_empty_square(self) -> str:
+        """
+        Returns the empty square symbol
+        """
+        return self.empty_square
+
+    def get_player_move(self) -> tuple[int, int]:
+        """
+        Reads and returns the player move from input
+        """
         result = -1, -1
         try:
             row = int(input("Enter a row: "))
@@ -47,20 +61,19 @@ class BoardText(object):
         finally:
             return result
 
-    @staticmethod
-    def show_message(message):
+    def show_message(self, message: str) -> None:
         """
         Shows a message to the user
         """
         print(message)
 
-    def show_move_message(self, player_name, row, col):
+    def show_move_message(self, player_name: str, row: int, col: int) -> None:
         """
         Shows a message describing the player's move
         """
         self.show_message(self.move_message.format(player_name, row, col))
 
-    def display_board(self):
+    def display_board(self) -> None:
         """
         Display the given game state
         """
@@ -91,7 +104,7 @@ class BoardText(object):
         self.show_message(line)
         self.show_message('')
 
-    def reverse_players(self):
+    def reverse_players(self) -> None:
         """
         Swaps the player's and the opponent's symbols
         """
@@ -99,19 +112,31 @@ class BoardText(object):
         self.set_player_ch(self.opponent_ch)
         self.set_opponent_ch(tmp_player_ch)
 
-    def set_player_ch(self, ch):
+    def get_player_ch(self) -> str:
+        """
+        Returns the player's symbol
+        """
+        return self.player_ch
+
+    def set_player_ch(self, ch: str) -> None:
         """
         Sets the value of the player symbol
         """
         self.player_ch = ch
 
-    def set_opponent_ch(self, ch):
+    def get_opponent_ch(self) -> str:
+        """
+        Returns the opponent's symbol
+        """
+        return self.opponent_ch
+
+    def set_opponent_ch(self, ch: str) -> None:
         """
         Sets the value of the opponent symbol
         """
         self.opponent_ch = ch
 
-    def get_square(self, row, col):
+    def get_square(self, row: int, col: int) -> str:
         """
         Returns the value of the square
         at position (row, col)
@@ -119,26 +144,26 @@ class BoardText(object):
         """
         return self.rows[row][col]
 
-    def set_square(self, row, col, ch):
+    def set_square(self, row: int, col: int, ch: str) -> None:
         """
         Set the square at (row, col) to ch
         row, col are between 0 and side - 1
         """
         self.rows[row][col] = '{0}'.format(ch)
 
-    def display_player_wins(self):
+    def display_player_wins(self) -> None:
         """
         Displays a victory message
         """
         self.show_message("You have won!!!")
 
-    def display_opponent_wins(self):
+    def display_opponent_wins(self) -> None:
         """
         Displays a defeat message
         """
         self.show_message("You lose!")
 
-    def display_game_is_draw(self):
+    def display_game_is_draw(self) -> None:
         """
         Displays a draw message
         """
