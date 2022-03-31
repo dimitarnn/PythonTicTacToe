@@ -21,7 +21,7 @@ class IBoard(ABC):
         pass
 
     @abstractmethod
-    def get_player_move(self) -> tuple[int, int]:
+    def get_player_move(self) -> (int, int):
         pass
 
     @abstractmethod
