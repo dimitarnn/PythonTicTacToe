@@ -1,6 +1,6 @@
 ## Game Logic
 
-This sections describes how the computer opponent selects the next move on the board. It must be 
+This sections describes how the computer simulates the opponent selecting the next move on the board. It must be 
 noted that there are many implementations available. For the sake of simplicity the **Min-Max 
 Algorithm** was chosen.
 
@@ -12,7 +12,7 @@ The definition of optimal play is the following:
 
 1. Win the game in as few moves as possible
 2. If a win is not possible then force a draw
-3. If a draw is not possible then lose wiht the longest game possible
+3. If a draw is not possible then try to prolong the game as much as possible
 
 _________________________________________________________________________________________________
 ### Input Data
@@ -24,7 +24,7 @@ ________________________________________________________________________________
 ### Output Data
 
 - Game result
-- How many moves till end of the game
+- Number of moves made when the game ends
 - The row of the optimal move
 - The column of the optimal move
 
@@ -39,26 +39,26 @@ algorithm checks future states, achievable after marking a single square from th
 
 > TODO:  Add picture of first step here and mark the computer player
 
-If at least one of these states has the game result of `-1` that means the opponent on the 
+If at least one of these states has the game result of `-1` that means the player on the 
 following turn will be presented with a state from which only a loss is possible. In that case 
-the algorithms chooses the square at `(row, col)` and wins the game.
+the algorithms chooses the square at `(row, col)` and eventually wins the game.
 
 > TODO: Add a picture to visualize the concept above
 
 However if multiple such moves are present, the algorithm chosses the one resulting in the 
-fastest win, or in other words the one with the lowest number of moves until the game ends.
+fastest win, or in other words the one with the lowest number of moves made when the game ends.
 
 > TODO: Add a picture to visualize the concept above
 
 If a win is not possible from the current state the algorithm attempts to force a draw. A draw 
-is possible if one of the next states will will have the game result of `0`. If the game will 
-end in a draw the number of moves doesn't matter, so the algorithm can choose to mark 
-an arbitrary square leading to a state with the result of `0`.
+is possible if one of the next states will have the game result of `0`. If the game will 
+end in a draw the number of moves made doesn't matter, so the algorithm can choose to mark 
+an arbitrary square leading to a state with the game result of `0`.
 
 > TODO: Add a picture to visualize the concept
 
 If none of the next state is winnable the algorithm choses the square at `(row, col)` which will 
-lead to the longest game, and that is the state with the largest number of moves until the game 
+lead to the longest game, and that is the state with the largest number of moves made when the game
 ends.
 
 > TODO: Add a picture to visualize the concept
