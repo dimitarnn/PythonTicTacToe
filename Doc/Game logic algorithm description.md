@@ -37,7 +37,7 @@ ________________________________________________________________________________
 The algorithm uses the concepts of Min-Max and game theory to find the optimal move. The 
 algorithm checks future states, achievable after marking a single square from the current state. 
 
-> TODO:  Add picture of first step here and mark the computer player
+![TicTacToe Diagram 1](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_1.png)
 
 If at least one of these states has the game result of `-1` that means the player on the 
 following turn will be presented with a state from which only a loss is possible. In that case 
