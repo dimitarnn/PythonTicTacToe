@@ -48,12 +48,12 @@ If at least one of these states has the game result of `-1` that means the playe
 following turn will be presented with a state from which only a loss is possible. In that case 
 the algorithms chooses the square at `(row, col)` and eventually wins the game.
 
-> TODO: Add a picture to visualize the concept above
+![TicTacToe Diagram 2](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_2.png)
 
 However if multiple such moves are present, the algorithm chosses the one resulting in the 
 fastest win, or in other words the one with the lowest number of moves made when the game ends.
 
-> TODO: Add a picture to visualize the concept above
+![TicTacToe Diagram 2](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_3.png)
 
 If a win is not possible from the current state the algorithm attempts to force a draw. A draw 
 is possible if one of the next states will have the game result of `0`. If the game will 
