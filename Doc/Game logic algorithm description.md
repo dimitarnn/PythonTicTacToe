@@ -28,8 +28,13 @@ ________________________________________________________________________________
 - The row of the optimal move
 - The column of the optimal move
 
-Game result is `1` if the opponent can win from the current game state, `0` if the opponent 
-can achieve a draw when playing optimally, and `-1` if the opponent inevitably loses.
+#### Game result can be either `1`, `0` or `-1`:
+* `1` means that the player making the current move can win from the current game state,
+regardless of the opponents' moves
+* `0` means that the player making the current move can achive a draw at best if the opponent
+plays optimally
+* `-1` means that the player making the current move will enevitably lose the game if the
+opponent plays optimally
 
 _________________________________________________________________________________________________
 ### Algorithm
