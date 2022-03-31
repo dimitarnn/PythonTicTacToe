@@ -65,7 +65,7 @@ ends.
 
 Corner cases are if the game is already over or the number of moves made exceeds the number of 
 squares on the board. In this case the algorithm checks the game state and returns the found 
-game result, number of moves made received as parameter, and `(-1, -1)` for the row and column
+game result, number of moves made received as parameter, and `(-1, -1)` for the row and column.
 
 > TODO: Add a picture to visualize the cornen cases
 
