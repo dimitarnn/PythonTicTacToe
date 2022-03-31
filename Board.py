@@ -44,7 +44,7 @@ class BoardText(IBoard.IBoard):
         """
         return self.empty_square
 
-    def get_player_move(self) -> tuple[int, int]:
+    def get_player_move(self) -> (int, int):
         """
         Reads and returns the player move from input
         """

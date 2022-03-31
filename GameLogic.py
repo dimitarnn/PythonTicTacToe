@@ -161,7 +161,7 @@ class GameLogicRecursive(IGameLogic.IGameLogic):
         # check anti-diagonal
         return self.can_win_in_anti_diag(board)
 
-    def get_final_move(self, board: IBoard.IBoard) -> tuple[int, int]:
+    def get_final_move(self, board: IBoard.IBoard) -> (int, int):
         """
         Checks if a single move remains and
         returns it's (row, col)
@@ -222,7 +222,7 @@ class GameLogicRecursive(IGameLogic.IGameLogic):
 
         return 0
 
-    def get_optimal_move(self, board: IBoard.IBoard, move_cnt: int) -> tuple[int, int, int, int]:
+    def get_optimal_move(self, board: IBoard.IBoard, move_cnt: int) -> (int, int, int, int):
         """
         Accepts a board class and number of moves made
         Finds the optimal move by trying all available

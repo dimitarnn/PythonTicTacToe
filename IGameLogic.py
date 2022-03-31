@@ -50,5 +50,5 @@ class IGameLogic(ABC):
         pass
 
     @abstractmethod
-    def get_optimal_move(self, board: IBoard.IBoard, move_cnt: int) -> tuple[int, int, int, int]:
+    def get_optimal_move(self, board: IBoard.IBoard, move_cnt: int) -> (int, int, int, int):
         pass
