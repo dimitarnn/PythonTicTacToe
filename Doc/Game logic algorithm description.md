@@ -63,7 +63,7 @@ is possible if one of the next states will have the game result of `0`. If the g
 end in a draw the number of moves made doesn't matter, so the algorithm can choose to mark 
 an arbitrary square leading to a state with the game result of `0`.
 
-> TODO: Add a picture to visualize the concept
+![TicTacToe Diagram 4](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_4.png)
 
 If none of the next state is winnable the algorithm choses the square at `(row, col)` which will 
 lead to the longest game, and that is the state with the largest number of moves made when the game
