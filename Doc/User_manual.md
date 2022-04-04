@@ -49,4 +49,7 @@ action made
 ![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_5.png)
 
 7. Continue playing until the game is over.
+
+![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_6.png)
+
 8. To start over or play again re-run main.py
