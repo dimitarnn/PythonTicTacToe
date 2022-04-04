@@ -69,7 +69,7 @@ an arbitrary square leading to a state with the game result of `0`.
 lead to the longest game, and that is the state with the largest number of moves made when the game
 ends.
 
-> TODO: Add a picture to visualize the concept
+![TicTacToe Diagram 5](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_5.png)
 
 * Corner cases are if the game is already over or the number of moves made exceeds the number of 
 squares on the board. In this case the algorithm checks the game state and returns the found 
