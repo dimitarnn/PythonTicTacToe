@@ -41,7 +41,9 @@ ________________________________________________________________________________
 ### Algorithm
 
 The algorithm uses the concepts of Min-Max and game theory to find the optimal move. The 
-algorithm checks future states, achievable after marking a single square from the current state. 
+algorithm checks all future states, achievable after marking a single square (*for example at
+`(row, col)`*) from the current state. The game result of these future states is calculated
+recursively, using the same logic.
 
 ![TicTacToe Diagram 1](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_1.png)
 
