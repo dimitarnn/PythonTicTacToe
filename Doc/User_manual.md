@@ -20,9 +20,12 @@ Edition.
 3. Select HTTPS and copy the link
 4. Open PyCharm
 5. Go to VCS - Get from Version Control
-6. Paste the copied link and choose a directory
-7. Click the 'Clone' button
-8. Done
+
+![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_2.png)
+
+7. Paste the copied link and choose a directory
+8. Click the 'Clone' button
+9. Done
 ---
 
 ### Step 2: Playing the game
