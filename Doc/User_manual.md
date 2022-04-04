@@ -34,7 +34,10 @@ Edition.
 ### Step 2: Playing the game
 
 1. After the repository has been cloned, run main.py
-2. The game starts, with all the information displayed
+
+![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_4.png)
+
+3. The game starts, with all the information displayed
 on the console
 3. By default the player makes the first move
 4. In order to play enter the row and then column of the square
