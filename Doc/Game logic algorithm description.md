@@ -66,18 +66,21 @@ an arbitrary square leading to a state with the game result of `0`.
 
 ![TicTacToe Diagram 4](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_4.png)
 
-* If none of the next state is winnable the algorithm choses the square at `(row, col)` which will 
-lead to the longest game, and that is the state with the largest number of moves made when the game
-ends.
+* If from the current state all possible next states have the game result of `1` it means that the player on the
+following turn will win the game, no matter which square the algorithm chooses. In other words from the current state
+neither a win, nor draw is achievable, so the algorithm should mark the square at `(row, col)` that will 
+result in the longest game, and that is the square leading to the state with the largest number of moves made when the game ends.
 
 ![TicTacToe Diagram 5](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_5.png)
 
 * Corner cases are if the game is already over or the number of moves made exceeds the number of 
-squares on the board. In this case the algorithm checks the game state and returns the found 
-game result, number of moves made received as parameter, and `(-1, -1)` for the row and column.
+squares on the board. In this case the algorithm checks the game state and returns the game result,
+number of moves made received as parameter, and `(-1, -1)` for the row and column.
 
 ![TicTacToe Diagram 6](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_6.png)
 
 _________________________________________________________________________________________________
-**A diagram showing the possible results, achievable from a given game state:** 
+**A diagram showing the possible board states, achievable from a given game state, and the game result of each of these states if both players play optimally:**
+
 ![TicTacToe diagram](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_possibility_tree_png.png)
+
