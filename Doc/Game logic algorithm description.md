@@ -78,4 +78,5 @@ game result, number of moves made received as parameter, and `(-1, -1)` for the 
 ![TicTacToe Diagram 6](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_6.png)
 
 _________________________________________________________________________________________________
+**A diagram showing the possible results, achievable from a given game state:** 
 ![TicTacToe diagram](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_possibility_tree_png.png)
