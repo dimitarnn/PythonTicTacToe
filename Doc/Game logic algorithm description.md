@@ -33,9 +33,9 @@ from the current board state
 #### Game result can be either `1`, `0` or `-1`:
 * `1` means that the player making the current move can win from the current game state,
 regardless of the opponents' moves
-* `0` means that the player making the current move can achive a draw at best if the opponent
+* `0` means that the player making the current move can achieve a draw at best if the opponent
 plays optimally
-* `-1` means that the player making the current move will enevitably lose the game if the
+* `-1` means that the player making the current move will inevitably lose the game if the
 opponent plays optimally
 
 _________________________________________________________________________________________________
