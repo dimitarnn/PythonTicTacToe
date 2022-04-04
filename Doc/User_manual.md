@@ -24,9 +24,9 @@ Edition.
 
 ![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_2.png)
 
-7. Paste the copied link and choose a directory
-8. Click the 'Clone' button
-9. Done
+6. Paste the copied link and choose a directory
+7. Click the 'Clone' button
+8. Done
 
 ![picture_guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_3.png)
 ---
@@ -37,13 +37,16 @@ Edition.
 
 ![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_4.png)
 
-3. The game starts, with all the information displayed
+2. The game starts, with all the information displayed
 on the console
 3. By default the player makes the first move
 4. In order to play enter the row and then column of the square
 you want to mark
 5. The updated board is printed along with a message describing the game
 action made
-7. The computer makes a move and and the updated board is printed again
-8. Continue playing until the game is over.
-9. To start over or play again re-run main.py
+6. The computer makes a move and and the updated board is printed again
+
+![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_5.png)
+
+7. Continue playing until the game is over.
+8. To start over or play again re-run main.py
