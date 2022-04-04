@@ -25,7 +25,8 @@ ________________________________________________________________________________
 ### Output Data
 
 - Game result
-- Number of moves made when the game ends
+- Number of moves made when the game ends, if both players play optimally
+from the current board state
 - The row of the optimal move
 - The column of the optimal move
 
@@ -41,8 +42,8 @@ ________________________________________________________________________________
 ### Algorithm
 
 The algorithm uses the concepts of Min-Max and game theory to find the optimal move. It checks
-all future states, achievable after marking a single square (*for example at `(row, col)`*)
-from the current state. The game results of these future states are calculated recursively,
+all future states, achievable from the current state after marking a single square
+(*for example at `(row, col)`*). The game results of these future states are calculated recursively,
 using the same logic.
 
 ![TicTacToe Diagram 1](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_1.png)
@@ -53,7 +54,7 @@ the algorithms chooses the square at `(row, col)` and eventually wins the game.
 
 ![TicTacToe Diagram 2](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_2.png)
 
-* However if multiple such moves are present, the algorithm chosses the one resulting in the 
+* However if multiple such moves are present, the algorithm chooses the one resulting in the 
 fastest win, or in other words the one with the lowest number of moves made when the game ends.
 
 ![TicTacToe Diagram 2](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_3.png)
