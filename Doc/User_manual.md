@@ -13,6 +13,8 @@ Edition.
 ---
 ### Step 1: Cloning the repository
 
+![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_1.png)
+
 1. Go to the [repository page](https://github.com/dimitarnn/PythonTicTacToe)
 2. Click on the green 'Code' button
 3. Select HTTPS and copy the link
