@@ -47,31 +47,31 @@ using the same logic.
 
 ![TicTacToe Diagram 1](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_1.png)
 
-If at least one of these states has the game result of `-1` that means the player on the 
+* If at least one of these states has the game result of `-1` that means the player on the 
 following turn will be presented with a state from which only a loss is possible. In that case 
 the algorithms chooses the square at `(row, col)` and eventually wins the game.
 
 ![TicTacToe Diagram 2](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_2.png)
 
-However if multiple such moves are present, the algorithm chosses the one resulting in the 
+* However if multiple such moves are present, the algorithm chosses the one resulting in the 
 fastest win, or in other words the one with the lowest number of moves made when the game ends.
 
 ![TicTacToe Diagram 2](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_3.png)
 
-If a win is not possible from the current state the algorithm attempts to force a draw. A draw 
+* If a win is not possible from the current state the algorithm attempts to force a draw. A draw 
 is possible if one of the next states will have the game result of `0`. If the game will 
 end in a draw the number of moves made doesn't matter, so the algorithm can choose to mark 
 an arbitrary square leading to a state with the game result of `0`.
 
 ![TicTacToe Diagram 4](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_4.png)
 
-If none of the next state is winnable the algorithm choses the square at `(row, col)` which will 
+* If none of the next state is winnable the algorithm choses the square at `(row, col)` which will 
 lead to the longest game, and that is the state with the largest number of moves made when the game
 ends.
 
 > TODO: Add a picture to visualize the concept
 
-Corner cases are if the game is already over or the number of moves made exceeds the number of 
+* Corner cases are if the game is already over or the number of moves made exceeds the number of 
 squares on the board. In this case the algorithm checks the game state and returns the found 
 game result, number of moves made received as parameter, and `(-1, -1)` for the row and column.
 
