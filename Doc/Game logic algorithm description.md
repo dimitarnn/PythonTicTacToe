@@ -75,7 +75,7 @@ ends.
 squares on the board. In this case the algorithm checks the game state and returns the found 
 game result, number of moves made received as parameter, and `(-1, -1)` for the row and column.
 
-> TODO: Add a picture to visualize the cornen cases
+![TicTacToe Diagram 6](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_algorithm_diagram_6.png)
 
 _________________________________________________________________________________________________
 ![TicTacToe diagram](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_possibility_tree_png.png)
