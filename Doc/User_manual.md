@@ -9,6 +9,7 @@ Edition.
 
 1. Pycharm installed
 2. Python 3.7 or higher
+3. Git installed
 
 ---
 ### Step 1: Cloning the repository
@@ -19,13 +20,15 @@ Edition.
 2. Click on the green 'Code' button
 3. Select HTTPS and copy the link
 4. Open PyCharm
-5. Go to VCS - Get from Version Control
+5. Go to 'Get from VCS'
 
 ![picture guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_2.png)
 
 7. Paste the copied link and choose a directory
 8. Click the 'Clone' button
 9. Done
+
+![picture_guide](https://github.com/dimitarnn/PythonTicTacToe/blob/master/Doc/TicTacToe_user_manual_3.png)
 ---
 
 ### Step 2: Playing the game
